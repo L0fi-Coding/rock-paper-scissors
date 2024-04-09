@@ -20,72 +20,124 @@ function player(){
     playerChoice=playerhcoice.toLowerCase()
     return playerChoice;
 }
+const rock= document.querySelector(".rock")
+const scissor=document.querySelector(".scissor")
+const paper=document.querySelector(".paper")
+
+
+
+    rock.addEventListener("click",() =>game(computerChoice(),"rock"))
+scissor.addEventListener("click",() =>game(computerChoice(),"scissor"))
+paper.addEventListener("click",() =>game(computerChoice(),"paper"))
+
+let scoreboard = document.querySelector(".scoreboard")
+let score = document.createElement("h1")
+const result=document.createElement("p");
+
 function game(computer,player){
     let answer;
-    if(computer=="rock" && player=="rock") {    
-        console.log("its a tie")
-        return answer="its a tie";
+    if (ctally>=5){
+        alert("computer wins")
+    }
+    else if (ptally>=5){
+        alert("player wins")
+    }
+        
+    else if(computer=="rock" && player=="rock") {   
+        
+ 
+        result.textContent="its a tie"
+        console.log(ctally,ptally)
+        answer="its a tie";
+        return tally(answer);
     }
     else if(computer=="paper" && player =="paper")
     {
-        console.log("its a tie")
-        return answer="its a tie"
+        score.textContent=`computer score:${ctally}  player score:${ptally}`
+
+        result.textContent="its a tie"
+        console.log(ctally,ptally)
+        answer="its a tie"
+        return tally(answer);
     }
     else if(computer=="scissor" && player =="scissor")
     {
-        console.log("its a tie")
-        return answer="its a tie"
+        
+        score.textContent=`computer score:${ctally}  player score:${ptally}`
+        result.textContent="its a tie"
+        console.log(ctally,ptally)
+         answer="its a tie"
+         return tally(answer);
     }
     else if(computer=="paper" && player =="rock")
     {
-        console.log("you lost to a bot")
-        return answer="you lost to a bot"
+        
+        score.textContent=`computer score:${ctally}  player score:${ptally}`
+        result.textContent="you lost to a bot"
+        console.log(ctally,ptally)
+        answer="you lost to a bot"
+        return ++ctally;
+
     }
     else if(computer=="paper" && player =="scissor")
     {
-        console.log("you win")
-        return answer="you win"
+        
+        score.textContent=`computer score:${ctally}  player score:${ptally}`
+        result.textContent="you win"
+        console.log(ptally, ctally)
+         answer="you win"
+         return ++ptally;
     }
     else if(computer=="rock" && player =="paper")
     {
-        console.log("you win")
-        return answer="you win"
+    
+        score.textContent=`computer score:${ctally}  player score:${ptally}`
+        result.textContent="you win"
+        console.log(ctally, ptally)
+         answer="you win"
+         return ++ptally;
     }
     else if(computer=="rock" && player =="scissor")
     {
-        console.log("you lost to a bot")
-        return answer="you lost to a bot"
+        
+        score.textContent=`computer score:${ctally}  player score:${ptally}`
+        result.textContent="you lost to a bot"
+        console.log(ctally,ptally)
+         answer="you lost to a bot"
+         return ++ctally;
     }
     else if(computer=="scissor" && player =="rock")
     {
-        console.log("you win")
-        return answer="you win"
+        
+        score.textContent=`computer score:${ctally}  player score:${ptally}`
+        result.textContent="you win"
+         answer="you win"
+         return ++ptally;
     }
     else if(computer=="scissor" && player =="paper")
     {
-        console.log("you lost to a bot")
-        return answer="you lost to a bot"
+       
+        score.textContent=`computer score:${ctally}  player score:${ptally}`
+        result.textContent="you lost to a bot"
+        answer="you lost to a bot"
+        return ++ctally;
     }
 }
 
 function tally(game){
     
-    if( game == "its a tie"){
-    return;
-    }
     if(game == "you win"){
         return ++ptally
     }
     if(game == "you lost to a bot"){
         return  ++ctally
     }
+    else 
+    return;
+    
 }
 function playGame(){
-    tally(game(computerChoice(),player()))
-    tally(game(computerChoice(),player()))
-    tally(game(computerChoice(),player()))
-    tally(game(computerChoice(),player()))
-    tally(game(computerChoice(),player()))
+ 
     if(ctally>=3){
         console.log("you lost the war",ctally,ptally)
         
@@ -97,6 +149,8 @@ function playGame(){
         console.log("it be a tie",ctally,ptally)
     }
 }
-playGame();
+
+scoreboard.appendChild(score)
+scoreboard.appendChild(result)
 
 
